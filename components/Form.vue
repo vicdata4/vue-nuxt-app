@@ -1,24 +1,23 @@
 <template>
 <div>
-  <form onsubmit="return false">
-    <input type="text" placeholder="input field">
-    <input type="submit" v-on:click="sendForm" value="Add element">
-    {{this.name}}
-  </form>
-  <seed-modal>
-    <button slot="button" class="sd-btn blue">Open Modal</button>
-    <div slot="header" class="header">      
-        <span>Building Web Components</span>
-        <button class="sd-icon clear close"><i class="material-icons blue-mate">close</i></button>
-    </div>
-    <div slot="content">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-    </div>
-    <div slot="footer" class="footer">
-        <button class="sd-btn black close">Close</button>
-        <button class="sd-btn blue-mate">Send</button>
-    </div>
-  </seed-modal>
+  <form id="signup-form" @submit.prevent="processForm">
+      <!-- name -->
+      <div class="field">
+        <label class="label">Name</label>
+        <input type="text" class="input" name="name" v-model="name">
+      </div>
+
+      <!-- email -->
+      <div class="field">
+        <label class="label">Email</label>
+        <input type="email" class="input" name="email" v-model="email">
+      </div>
+
+      <!-- submit button -->
+      <div class="field has-text-right">
+        <button type="submit" class="button is-danger">Submit</button>
+      </div>
+    </form>
 </div>
 </template>
 <script>
@@ -27,18 +26,14 @@ import '@seed-catalog/modal';
 export default {
   data () {
     return {
-        name: 'Vue.js'
+        name: '',
+        email: ''
     }
   },
   methods: {
-    sendForm: function (event) {
-      // `this` inside methods points to the Vue instance
-      this.name = 'React.js';
-      console.log('Hello ' + this.name + '!');
-      // `event` is the native DOM event
-      if (event) {
-        console.log(event.target.tagName)
-      }
+    processForm: function() {
+      console.log({ name: this.name, email: this.email });
+      alert('Processing');
     }
   },
   /**
