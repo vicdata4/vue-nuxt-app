@@ -1,10 +1,15 @@
 <template>
   <div class="container">
-      <Header />
-      <HackerNewsFinder />
+    <Header />
+    <ul>
+      <li><NuxtLink to="finder">Finder page</NuxtLink></li>
+    </ul>
   </div>
 </template>
 
 <style>
+ul {
+  padding: 40px;
+}
 
 </style>

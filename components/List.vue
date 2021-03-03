@@ -4,7 +4,7 @@
       <thead>
         <tr>
           <th
-            class="header"
+            class="col-head"
             scope="col"
             v-bind:class="item.column.toLowerCase()"
             v-for="item in columns"
@@ -13,9 +13,8 @@
         </tr>
       </thead>
       <tbody>
-        <tr v-for="item in list" :key="item.objectID">
+        <tr class="row" v-for="item in list" :key="item.objectID">
           <td
-            class="row"
             v-bind:data-label="col.column"
             v-bind:class="col.column.toLowerCase()"
             v-for="col in columns"
@@ -27,6 +26,8 @@
               <option value="opel">Opel</option>
               <option value="audi">Audi</option>
             </select>
+
+            <a v-if="col.column === 'Title'" v-bind:href="item.url" target="_blank">{{item.title}}</a>
 
             <span v-else>{{item[col.field]}}</span>
           </td>
@@ -68,7 +69,7 @@ table caption {
 }
 
 table tr {
-  background-color: #f8f8f8;
+  /*background-color: #f8f8f8;*/
   border: 1px solid #ddd;
   padding: .35em;
 }
@@ -83,6 +84,15 @@ table th {
   font-size: .85em;
   letter-spacing: .1em;
   text-transform: uppercase;
+}
+
+.row:hover {
+  background-color: rgb(250, 250, 250);
+}
+
+.col-head:hover {
+  background-color: rgb(247, 248, 248);
+  cursor: pointer;
 }
 
 @media screen and (max-width: 600px) {
