@@ -1,9 +1,9 @@
 <template>
   <div>
     <ul>
-      <li v-for="mountain in mountains" :key="mountain.title">
-        <a v-bind:href="mountain.url" target="_blank">
-          {{ mountain.title }}
+      <li v-for="item in list" :key="item.title">
+        <a v-bind:href="item.url" target="_blank">
+          {{ item.title }}
         </a>
       </li>
     </ul>
@@ -11,7 +11,7 @@
 </template>
 <script>
 export default {
-  props: ['mountains'],
+  props: ['list'],
   data() {
     return {}
   },

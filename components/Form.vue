@@ -1,23 +1,21 @@
 <template>
 <div>
-  <form id="signup-form" @submit.prevent="processForm">
-      <!-- name -->
-      <div class="field">
-        <label class="label">Name</label>
-        <input type="text" class="input" name="name" v-model="name">
-      </div>
+  <form id="custom-form" @submit.prevent="validateForm">
+    <div class="field">
+      <label class="label">Name</label>
+      <input type="text" placeholder="name" class="input" name="name" v-model="name">
+    </div>
 
-      <!-- email -->
-      <div class="field">
-        <label class="label">Email</label>
-        <input type="email" class="input" name="email" v-model="email">
-      </div>
+    <div class="field">
+      <label class="label">Email</label>
+      <input type="email" placeholder="email" class="input" name="email" v-model="email">
+    </div> 
 
-      <!-- submit button -->
-      <div class="field has-text-right">
-        <button type="submit" class="button is-danger">Submit</button>
-      </div>
-    </form>
+    <div class="field has-text-right">
+      <button type="submit" class="button is-danger">Submit</button>
+    </div>
+  </form>
+  <button @click="resetForm">Reset form</button>
 </div>
 </template>
 <script>
@@ -31,9 +29,16 @@ export default {
     }
   },
   methods: {
-    processForm: function() {
+    validateForm: function() {
       console.log({ name: this.name, email: this.email });
-      alert('Processing');
+      if (this.name) {
+        this.$emit('search-value', this.name);
+      } else {
+        alert('invalid form');
+      }
+    },
+    resetForm: function() {
+      document.querySelector('#custom-form').reset();
     }
   },
   /**
