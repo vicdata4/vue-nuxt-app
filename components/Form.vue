@@ -1,11 +1,29 @@
 <template>
+<div>
   <form onsubmit="return false">
     <input type="text" placeholder="input field">
     <input type="submit" v-on:click="sendForm" value="Add element">
     {{this.name}}
   </form>
+  <seed-modal>
+    <button slot="button" class="sd-btn blue">Open Modal</button>
+    <div slot="header" class="header">      
+        <span>Building Web Components</span>
+        <button class="sd-icon clear close"><i class="material-icons blue-mate">close</i></button>
+    </div>
+    <div slot="content">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+    </div>
+    <div slot="footer" class="footer">
+        <button class="sd-btn black close">Close</button>
+        <button class="sd-btn blue-mate">Send</button>
+    </div>
+  </seed-modal>
+</div>
 </template>
 <script>
+import '@seed-catalog/modal';
+
 export default {
   data () {
     return {

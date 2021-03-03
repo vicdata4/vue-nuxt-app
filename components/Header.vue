@@ -2,9 +2,6 @@
   <header>
       <div class="title-box">
         <Logo />
-        <h1 class="title">
-            my-nuxt-app
-        </h1>
       </div>
       <div class="links">
         <a
@@ -38,9 +35,6 @@ header {
     border-bottom: 1px solid #e3e3e3;
 }
 
-.title {
-    font-size: 20px;
-} 
 .title-box {
     display: flex;
     justify-content: flex-start;
