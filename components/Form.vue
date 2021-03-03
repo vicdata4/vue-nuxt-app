@@ -14,8 +14,11 @@
     <div class="field has-text-right">
       <button type="submit" class="button is-danger">Submit</button>
     </div>
+
+    <div class="field has-text-right">
+      <button type="reset" class="button is-danger">Reset</button>
+    </div>
   </form>
-  <button @click="resetForm">Reset form</button>
 </div>
 </template>
 <script>
@@ -36,9 +39,6 @@ export default {
       } else {
         alert('invalid form');
       }
-    },
-    resetForm: function() {
-      document.querySelector('#custom-form').reset();
     }
   },
   /**

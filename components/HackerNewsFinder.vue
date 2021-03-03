@@ -4,13 +4,12 @@
       <p v-if="$fetchState.pending"><span class="loading"></span></p>
       <p v-else-if="$fetchState.error">Error while fetching mountains 🤬</p>
       <List v-else v-bind:list="list" />
-      <button @click="$fetch">Refresh Data</button>
     </div>
 </template>
 
 
 <script>
-import { errorHandler, fetchParams } from './utils/fetch.config.js';
+import { fetchParams } from './utils/fetch.config.js';
 
 const defaultValues = {
   search: 'react',
@@ -40,6 +39,7 @@ export default {
       page: this.page,
       hitsPerPage: this.hitsPerPage
     });
+
     this.list = response.hits;
   }
 }
