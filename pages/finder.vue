@@ -1,10 +1,9 @@
 <template>
   <div class="container">
-      <Header />
-      <HackerNewsFinder />
+    <Header />
+    <HackerNewsFinder />
   </div>
 </template>
 
 <style>
-
 </style>
