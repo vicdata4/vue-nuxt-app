@@ -1,8 +1,8 @@
 <template>
   <div>
-    <Form @search-value="searchValue" />
-    <p v-if="$fetchState.pending"><span class="loading"></span></p>
-    <p v-else-if="$fetchState.error">Error while fetching mountains 🤬</p>
+    <Form @search-value="getData" />
+    <p v-if="pending"><span class="loading"></span></p>
+    <p v-else-if="error">Error while fetching mountains 🤬</p>
     <List v-else v-bind:list="list" />
   </div>
 </template>
@@ -21,26 +21,34 @@ export default {
   data() {
     return {
       list: [],
+      pending: true,
+      error: false,
       ...defaultValues,
     };
   },
   methods: {
-    searchValue(value) {
-      this.search = value;
-      this.$fetch();
+    async getData(searchValue) {
+      this.pending = true;
+      this.error = false;
+
+      const response = await fetchParams({
+        search: searchValue,
+        page: this.page,
+        hitsPerPage: this.hitsPerPage,
+      });
+
+      this.pending = false;
+
+      if (!response.error) {
+        this.list = response.hits;
+      } else {
+        this.error = true;
+        // Show error
+      }
     },
   },
-  activated() {
-    this.$fetch();
-  },
-  async fetch() {
-    const response = await fetchParams({
-      search: this.search,
-      page: this.page,
-      hitsPerPage: this.hitsPerPage,
-    });
-
-    this.list = response.hits;
+  mounted() {
+    this.getData(this.search);
   },
 };
 </script>
