@@ -21,7 +21,7 @@ export default {
   target: 'static',
 
   router: {
-    base: '/<repository-name>/'
+    base: '/vue-nuxt-app/'
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
