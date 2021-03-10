@@ -1,7 +1,8 @@
 <template>
   <div class="container">
     <Header />
-    <h3>Proveedores dados de alta</h3>
+    <h3>Subroute</h3>
+    <img src="~/assets/images/logo_md.png" />
   </div>
 </template>
 

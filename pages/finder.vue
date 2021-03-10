@@ -4,6 +4,5 @@
     <HackerNewsFinder />
   </div>
 </template>
-
 <style>
 </style>
