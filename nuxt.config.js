@@ -18,6 +18,7 @@ export default {
     ]
   },
 
+  // npm run generate - static build config for github pages
   target: 'static',
 
   router: {
